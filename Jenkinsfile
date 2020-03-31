@@ -18,4 +18,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'Always execute this block'
+        }
+    }
 }
