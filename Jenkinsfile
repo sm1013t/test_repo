@@ -9,6 +9,7 @@ pipeline {
                steps {
 		       echo "Build application version: ${VERSION_NAME}"
 		       echo " Git cred: ${GIT_CRED} "
+		       sh "mvn --version"
                      }	
 	 }
 	stage('Test') {
