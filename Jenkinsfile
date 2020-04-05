@@ -1,15 +1,14 @@
 pipeline {
   agent any
-  environment {
-	  VERSION_NAME = '1.3.1'
-	  GIT_CRED = credentials('GIT_ID')
+  parameters {
+		//string(name: 'VERSION' ,defaultvalue: '', description: 'Prod version')
+		choice(name: 'VERSION', choice: ['1.1.2' , '1.2.0'], description: 'Prod version' )
+		//booleanParam(name: 'executeTests' ,defaultvalue: 'true', description: 'Prod version' )
 	}
   stages {
 	 stage('Build') {
                steps {
-		       echo "Build application version: ${VERSION_NAME}"
-		       echo " Git cred: ${GIT_CRED} "
-		       sh "mvn --version"
+		       echo " version: ${params.VERSION}"
                      }	
 	 }
 	stage('Test') {
