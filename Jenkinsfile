@@ -9,6 +9,11 @@ pipeline {
                      }	
 	 }
 	stage('Test') {
+		when {
+		  expression {
+		          BRANCH_NAME == 'master'
+			}
+		 }
                steps {
                      echo 'Test Block'
                     }	
